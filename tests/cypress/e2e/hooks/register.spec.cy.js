@@ -2,8 +2,8 @@ describe('register hook specification', () => {
   it('should update when called after observe hook', () => {
     const markup = /*html*/ `<div x-controller="controller"></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { observe, register } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { observe, register } = malenia;
 
       const Controller = cy.spy(() => {});
 

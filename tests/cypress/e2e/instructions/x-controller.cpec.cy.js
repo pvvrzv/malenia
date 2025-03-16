@@ -2,8 +2,8 @@ describe('x-controller instruction specification', () => {
   it('should initialize controller and pass it props', () => {
     const markup = /*html*/ `<div x-controller="controller"></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { observe, register } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { observe, register } = malenia;
 
       const Controller = cy.spy(() => {});
 
@@ -20,8 +20,8 @@ describe('x-controller instruction specification', () => {
   it('should initialize controller only once', () => {
     const markup = /*html*/ `<div x-controller="controller controller"></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { observe, register } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { observe, register } = malenia;
 
       const Controller = cy.spy(() => {});
 
@@ -35,8 +35,8 @@ describe('x-controller instruction specification', () => {
   it('should not throw when instruction arguments is an empty string', () => {
     const markup = /*html*/ `<div x-controller=""></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { register, observe } = malenia;
 
       const Controller = cy.spy(() => {});
 
@@ -48,8 +48,8 @@ describe('x-controller instruction specification', () => {
   it('should not throw when instruction was not passed any arguments', () => {
     const markup = /*html*/ `<div x-controller></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { register, observe } = malenia;
 
       const Controller = cy.spy(() => {});
 
@@ -61,8 +61,8 @@ describe('x-controller instruction specification', () => {
   it('should initialize controller only once for the same element', () => {
     const markup = /*html*/ `<div x-target x-controller="controller"></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { observe, register, mount } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { observe, register, mount } = malenia;
 
       const spy = cy.spy(() => {});
 
@@ -94,8 +94,8 @@ describe('x-controller instruction specification', () => {
   it('should update when instuction arguments change', () => {
     const markup = /*html*/ `<div x-controller=""></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { observe, register } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { observe, register } = malenia;
 
       const Controller = cy.spy(() => {});
 

@@ -1,18 +1,11 @@
-import {
-  observe,
-  register,
-  provide,
-  type Controller,
-  effect,
-  mount,
-} from '@lib';
+import { observe, register, mount, select, type Controller } from "@lib";
 
-const Foo = () => {
-  mount(() => {
-    throw new Error('')
-  });
+const Controller: Controller<HTMLElement> = ({ root }) => {
+  console.log(select("alias"));
 };
 
-register('foo', Foo);
+register("controller", Controller);
 
-observe(document.documentElement);
+window.addEventListener("DOMContentLoaded", () => {
+  observe(document.documentElement);
+});

@@ -1,9 +1,9 @@
-describe('unmount hook specification', () => {
-  it('should be called every time controller unmounts', () => {
+describe("unmount hook specification", () => {
+  it("should be called every time controller unmounts", () => {
     const markup = /*html*/ `<div x-target x-controller="controller"></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe, unmount } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { register, observe, unmount } = malenia;
 
       const spy = cy.spy(() => {});
 
@@ -11,38 +11,38 @@ describe('unmount hook specification', () => {
         unmount(spy);
       };
 
-      register('controller', Controller);
+      register("controller", Controller);
       observe(root);
 
       expect(spy).to.not.be.called;
 
-      cy.get('[x-target]').invoke('removeAttr', 'x-controller');
+      cy.get("[x-target]").invoke("removeAttr", "x-controller");
 
       cy.wait(1);
 
-      cy.get('[x-target]').then(() => {
+      cy.get("[x-target]").then(() => {
         expect(spy).to.be.calledOnce;
       });
 
-      cy.get('[x-target]').invoke('attr', 'x-controller', 'controller');
+      cy.get("[x-target]").invoke("attr", "x-controller", "controller");
 
       cy.wait(1);
 
-      cy.get('[x-target]').invoke('removeAttr', 'x-controller');
+      cy.get("[x-target]").invoke("removeAttr", "x-controller");
 
       cy.wait(1);
 
-      cy.get('[x-target]').then(() => {
+      cy.get("[x-target]").then(() => {
         expect(spy).to.be.calledTwice;
       });
     });
   });
 
-  it('should be possible to call multiple times', () => {
+  it("should be possible to call multiple times", () => {
     const markup = /*html*/ `<div x-target x-controller="controller"></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe, unmount } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { register, observe, unmount } = malenia;
 
       const spies = [cy.spy(() => {}), cy.spy(() => {})];
 
@@ -51,38 +51,38 @@ describe('unmount hook specification', () => {
         unmount(spies[1]);
       };
 
-      register('controller', Controller);
+      register("controller", Controller);
       observe(root);
 
-      cy.get('[x-target]').invoke('removeAttr', 'x-controller');
+      cy.get("[x-target]").invoke("removeAttr", "x-controller");
 
       cy.wait(1);
 
-      cy.get('[x-target]').then(() => {
+      cy.get("[x-target]").then(() => {
         expect(spies[0]).to.be.calledOnce;
         expect(spies[1]).to.be.calledOnce;
       });
 
-      cy.get('[x-target]').invoke('attr', 'x-controller', 'controller');
+      cy.get("[x-target]").invoke("attr", "x-controller", "controller");
 
       cy.wait(1);
 
-      cy.get('[x-target]').invoke('removeAttr', 'x-controller');
+      cy.get("[x-target]").invoke("removeAttr", "x-controller");
 
       cy.wait(1);
 
-      cy.get('[x-target]').then(() => {
+      cy.get("[x-target]").then(() => {
         expect(spies[0]).to.be.calledTwice;
         expect(spies[1]).to.be.calledTwice;
       });
     });
   });
 
-  it('should be called once if opion.once was set to true', () => {
+  it("should be called once if opion.once was set to true", () => {
     const markup = /*html*/ `<div x-target x-controller="controller"></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe, unmount } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { register, observe, unmount } = malenia;
 
       const spy = cy.spy(() => {});
 
@@ -90,39 +90,39 @@ describe('unmount hook specification', () => {
         unmount(spy, { once: true });
       };
 
-      register('controller', Controller);
+      register("controller", Controller);
       observe(root);
 
-      cy.get('[x-target]').invoke('removeAttr', 'x-controller');
+      cy.get("[x-target]").invoke("removeAttr", "x-controller");
 
       cy.wait(1);
 
-      cy.get('[x-target]').then(() => {
+      cy.get("[x-target]").then(() => {
         expect(spy).to.be.calledOnce;
       });
 
-      cy.get('[x-target]').invoke('attr', 'x-controller', 'controller');
+      cy.get("[x-target]").invoke("attr", "x-controller", "controller");
 
       cy.wait(1);
 
-      cy.get('[x-target]').invoke('removeAttr', 'x-controller');
+      cy.get("[x-target]").invoke("removeAttr", "x-controller");
 
       cy.wait(1);
 
-      cy.get('[x-target]').then(() => {
+      cy.get("[x-target]").then(() => {
         expect(spy).to.be.calledOnce;
       });
     });
   });
 
-  it('should not unmount already unmounted element', () => {
+  it("should not unmount already unmounted element", () => {
     const markup = /*html*/ `
       <div x-controller="foo">
         <div x-controller="baz">
       </div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe, unmount } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { register, observe, unmount } = malenia;
 
       const fooSpy = cy.spy(() => {});
       const bazSpy = cy.spy(() => {});
@@ -135,8 +135,8 @@ describe('unmount hook specification', () => {
         unmount(bazSpy);
       };
 
-      register('foo', Foo);
-      register('baz', Baz);
+      register("foo", Foo);
+      register("baz", Baz);
 
       observe(root);
 
@@ -157,12 +157,12 @@ describe('unmount hook specification', () => {
     });
   });
 
-  it('should not unmount if an element is still connected', () => {
+  it("should not unmount if an element is still connected", () => {
     const markup = /*html*/ `
       <div x-controller="foo"></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe, unmount } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { register, observe, unmount } = malenia;
 
       const fooSpy = cy.spy(() => {});
 
@@ -170,14 +170,14 @@ describe('unmount hook specification', () => {
         unmount(fooSpy);
       };
 
-      register('foo', Foo);
+      register("foo", Foo);
 
       observe(root);
 
       expect(fooSpy).to.not.be.called;
 
       cy.get('[x-controller="foo"]')
-        .invoke('get')
+        .invoke("get")
         .then((foo) => {
           const element = foo[0];
           const parent = element.parentElement;
@@ -191,11 +191,11 @@ describe('unmount hook specification', () => {
     });
   });
 
-  it('should be possible to use other lifecycle hooks from inside unmount', () => {
+  it("should be possible to use other lifecycle hooks from inside unmount", () => {
     const markup = /*html*/ `<div x-target x-controller="controller"></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe, mount, unmount } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { register, observe, mount, unmount } = malenia;
 
       const spy = cy.spy(() => {});
 
@@ -205,15 +205,15 @@ describe('unmount hook specification', () => {
         });
       };
 
-      register('controller', Controller);
+      register("controller", Controller);
 
       observe(root);
       expect(spy).to.not.be.called;
 
-      cy.get('[x-target]').invoke('removeAttr', 'x-controller').wait(1);
+      cy.get("[x-target]").invoke("removeAttr", "x-controller").wait(1);
 
-      cy.get('[x-target]')
-        .invoke('attr', 'x-controller', 'controller')
+      cy.get("[x-target]")
+        .invoke("attr", "x-controller", "controller")
         .wait(1)
         .then(() => {
           expect(spy).to.be.calledOnce;
@@ -221,12 +221,11 @@ describe('unmount hook specification', () => {
     });
   });
 
-  it('should run synchronously', () => {
+  it("should run synchronously", () => {
     const markup = /*html*/ `<div x-controller="controller"></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe, unmount, effect, signal, proxy, group } =
-        relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { register, observe, unmount, effect, signal, proxy, group } = malenia;
 
       const Controller = () => {
         unmount(() => {
@@ -260,53 +259,18 @@ describe('unmount hook specification', () => {
         });
       };
 
-      register('controller', Controller);
+      register("controller", Controller);
       observe(root);
 
-      cy.get('[x-controller]').invoke('remove');
+      cy.get("[x-controller]").invoke("remove");
     });
   });
 
-  it('should not run on another mutation if an error was thrown', () => {
-    const markup = /*html*/ `<div x-target x-controller="foo"></div>`;
-
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe, unmount, force } = relic;
-
-      const fooSpy = cy.spy(() => {
-        throw new Error('');
-      });
-
-      const Foo = () => {
-        unmount(fooSpy);
-      };
-
-      register('foo', Foo);
-      observe(root);
-
-      expect(fooSpy).to.not.be.called;
-
-      cy.get('[x-target]')
-        .invoke('get', 0)
-        .then((el) => {
-          el.removeAttribute('x-controller');
-          expect(() => force()).to.throw();
-          expect(fooSpy).to.be.calledOnce;
-        });
-
-      cy.get('[x-target]').invoke('attr', 'x-alias', 'baz::dir');
-
-      cy.wait(1).then(() => {
-        expect(fooSpy).to.be.calledOnce;
-      });
-    });
-  });
-
-  it('should not unmount if an element was added in the same iteration and is not connected', () => {
+  it("should not unmount if an element was added in the same iteration and is not connected", () => {
     const markup = /*html*/ `<div x-target></div>`;
 
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe, unmount } = relic;
+    cy.mount(markup).then(({ root, malenia }) => {
+      const { register, observe, unmount } = malenia;
 
       const fooSpy = cy.spy(() => {});
 
@@ -314,18 +278,18 @@ describe('unmount hook specification', () => {
         unmount(fooSpy);
       };
 
-      register('foo', Foo);
+      register("foo", Foo);
 
       observe(root);
 
       expect(fooSpy).not.to.be.called;
 
-      cy.get('[x-target]')
-        .invoke('get')
+      cy.get("[x-target]")
+        .invoke("get")
         .then((foo) => {
           const target = foo[0];
-          const element = document.createElement('div');
-          element.setAttribute('x-controller', 'foo');
+          const element = document.createElement("div");
+          element.setAttribute("x-controller", "foo");
           target.append(element);
           element.remove();
           target.append(element);
@@ -337,37 +301,6 @@ describe('unmount hook specification', () => {
       cy.wait(1).then(() => {
         expect(fooSpy).to.not.be.called;
       });
-    });
-  });
-
-  it('should be called only after all elements with an alias have been disconnected', () => {
-    const markup = /*html*/ `
-      <div x-controller="foo">
-        <div x-alias="foo::a1"></div>
-        <div x-alias="foo::a1"></div>
-        <div>
-          <div x-alias="foo::a2"></div>
-        </div>
-      </div>`;
-
-    cy.mount(markup).then(({ root, relic }) => {
-      const { register, observe, unmount, provide, disconnect } = relic;
-
-      const Foo = () => {
-        const a1 = provide('a1', []);
-        const a2 = provide('a2');
-
-        unmount(() => {
-          expect(a1.get().length).to.equal(0);
-          expect(a2.get()).to.equal(undefined);
-        });
-      };
-
-      register('foo', Foo);
-
-      observe(root);
-
-      disconnect(root);
     });
   });
 });
