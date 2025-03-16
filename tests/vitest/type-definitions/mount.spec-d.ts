@@ -1,6 +1,6 @@
-import { mount } from '@lib';
+import { mount } from "@lib";
 
-test('mount hook type test', () => {
+test("mount hook type test", () => {
   expectTypeOf(mount).toBeCallableWith(() => {}, { once: true });
   expectTypeOf(mount).toBeCallableWith(() => {}, { once: false });
   expectTypeOf(mount).toBeCallableWith(() => {}, {});

@@ -1,10 +1,7 @@
-export { observe, disconnect, force } from '@core/observer';
-export { register } from '@core/registry';
-export { immediate } from '@core/scheduler';
-export { clx, slx } from '@shared/attribute';
-export { type Controller } from '@core/controller';
-export { setup, mount, unmount } from '@core/lifecycle';
-export { provide, inject } from '@core/reactivity';
+export { type Controller } from "./controller";
+export { observe, ignore } from "./observer";
+export { register } from "./registry";
+export { mount, unmount, select, clx, slx } from "./hooks";
 export {
   type Signal,
   signal,
@@ -17,4 +14,4 @@ export {
   preserve,
   proxy,
   effect,
-} from '@pvvrzv/nyx';
+} from "@malenia/nyx";
