@@ -1,0 +1,36 @@
+{
+  "name": "malenia",
+  "private": false,
+  "version": "0.0.0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pvvrzv/malenia/issues"
+  },
+  "description": "Non-rendering, controller-based library for web interfaces.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pvvrzv/malenia.git"
+  },
+  "type": "module",
+  "types": "./build/index.d.ts",
+  "main": "./build/index.js",
+  "scripts": {
+    "build": "tsc && vite build",
+    "test": "npm run test:vitest & npm run test:cypress",
+    "test:manual": "vite",
+    "test:cypress:headed": "cypress open --project tests -C ../cypress.config.js",
+    "test:cypress": "cypress run --browser chrome --project tests -C ../cypress.config.js",
+    "test:vitest": "vitest"
+  },
+  "devDependencies": {
+    "cypress": "~13.8.1",
+    "jsdom": "~24.1.0",
+    "typescript": "~5.5.2",
+    "vite": "~5.1.4",
+    "vite-plugin-dts": "~3.9.0",
+    "vitest": "~1.6.0"
+  },
+  "dependencies": {
+    "@pvvrzv/nyx": "^0.0.1"
+  }
+}
