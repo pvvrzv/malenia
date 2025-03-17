@@ -1,10 +1,9 @@
 import { state } from './state';
 import { type Signal, signal } from '@pvvrzv/nyx';
 
-export function provide<T extends any>(
-  name: string,
-  value?: Signal<T> | T
-): Signal<T> {
+export function provide<V>(name: string): Signal<V | undefined>;
+export function provide<V = undefined>(name: string, value: V): Signal<V>;
+export function provide<V>(name: string, value?: Signal<V> | V): Signal<V> {
   const { controller } = state;
 
   if (!controller) {
@@ -15,7 +14,7 @@ export function provide<T extends any>(
     throw new Error('signal is already registered');
   }
 
-  const s = signal<T>(value as any);
+  const s = signal<V>(value as any);
 
   return (controller.signals[name] = s as Signal<any>);
 }
