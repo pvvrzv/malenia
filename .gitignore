@@ -16,6 +16,7 @@ tsconfig.vitest-temp.json
 node_modules
 build
 tests/benchmark
+tests/manual
 
 # Editor directories and files
 .obsidian
