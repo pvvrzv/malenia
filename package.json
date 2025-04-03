@@ -22,7 +22,7 @@
     "test": "npm run test:vitest & npm run test:cypress",
     "test:manual": "vite",
     "test:cypress:headed": "cypress open --project tests -C ../cypress.config.js",
-    "test:cypress": "cypress run --browser chrome --project tests -C ../cypress.config.js",
+    "test:cypress": "cypress run --browser chrome --project test -C ../cypress.config.js",
     "test:vitest": "vitest",
     "prepublishOnly": "npm run build"
   },
@@ -31,8 +31,8 @@
     "jsdom": "~24.1.0",
     "typescript": "~5.5.2",
     "vite": "~5.1.4",
-    "vite-plugin-dts": "~3.9.0",
-    "vitest": "~1.6.0"
+    "vite-plugin-dts": "~4.0.0",
+    "vitest": "~3.0.0"
   },
   "dependencies": {
     "@pvvrzv/nyx": "^0.0.1"

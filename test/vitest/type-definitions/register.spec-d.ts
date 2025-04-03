@@ -1,4 +1,4 @@
-import { type Controller, register} from '@lib';
+import { type Controller, register} from '@src';
 
 test('register hook type test', () => {
   const Foo: Controller<HTMLButtonElement> = ({ root }) => {

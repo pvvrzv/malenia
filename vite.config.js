@@ -10,7 +10,7 @@ export default defineConfig({
     outDir: 'build',
     minify: false,
     lib: {
-      entry: resolve(__dirname, './lib/index.ts'),
+      entry: resolve(__dirname, './src/index.ts'),
       name: 'malenia',
       fileName: 'index',
       formats: ['es'],
@@ -18,9 +18,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@lib': resolve(import.meta.dirname, './lib'),
-      '@core': resolve(import.meta.dirname, './lib/core'),
-      '@shared': resolve(import.meta.dirname, './lib/shared'),
+      '@src': resolve(import.meta.dirname, './src'),
+      '@core': resolve(import.meta.dirname, './src/core'),
+      '@shared': resolve(import.meta.dirname, './src/shared'),
       '@build': resolve(import.meta.dirname, './build'),
     },
   },
@@ -28,10 +28,18 @@ export default defineConfig({
   test: {
     watch: false,
     globals: true,
-    environmentMatchGlobs: [['**/*.dom.spec.js', 'jsdom']],
     typecheck: {
       enabled: true,
       ignoreSourceErrors: true,
     },
+    workspace: [
+      {
+        include: ['test/**/*.browser.spec.{js,ts}'],
+        extends: true,
+        test: {
+          environment: 'jsdom',
+        },
+      },
+    ],
   },
 });

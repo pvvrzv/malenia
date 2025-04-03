@@ -1,4 +1,4 @@
-import { mount } from "@lib";
+import { mount } from "@src";
 
 test("mount hook type test", () => {
   expectTypeOf(mount).toBeCallableWith(() => {}, { once: true });

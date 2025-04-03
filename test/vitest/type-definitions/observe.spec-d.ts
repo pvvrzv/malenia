@@ -1,4 +1,4 @@
-import { observe } from '@lib';
+import { observe } from '@src';
 
 const html = {} as HTMLElement;
 const element = {} as Element;

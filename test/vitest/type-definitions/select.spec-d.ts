@@ -1,4 +1,4 @@
-import { select } from "@lib";
+import { select } from "@src";
 
 test("select hook type test", () => {
   expectTypeOf(select("alias")).toEqualTypeOf<Element | null>();

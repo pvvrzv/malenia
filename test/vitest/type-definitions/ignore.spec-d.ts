@@ -1,4 +1,4 @@
-import { ignore } from "@lib";
+import { ignore } from "@src";
 
 const html = {} as HTMLElement;
 const element = {} as Element;

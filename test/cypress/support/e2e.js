@@ -1,5 +1,5 @@
 Cypress.Commands.add('mount', (markup) => {
-  cy.visit('/tests/cypress/static/index.html', { log: false });
+  cy.visit('/test/cypress/static/index.html', { log: false });
   cy.window({ log: false })
     .its('malenia', { log: false })
     .as('malenia', { log: false });

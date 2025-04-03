@@ -1,4 +1,4 @@
-import { unmount } from '@lib';
+import { unmount } from '@src';
 
 test('unmount hook type test', () => {
   expectTypeOf(unmount).toBeCallableWith(() => {}, { once: true });
