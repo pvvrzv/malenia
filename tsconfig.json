@@ -34,23 +34,23 @@
     "allowUnusedLabels": false,
     "paths": {
       "@shared/*": [
-        "./lib/shared/*"
+        "src/shared/*"
       ],
       "@core/*": [
-        "./lib/core/*"
+        "src/core/*"
       ],
       "@build": [
         "./build"
       ],
       "@lib/*": [
-        "./lib/*"
+        "src/*"
       ],
       "@lib": [
-        "./lib"
+        "src"
       ],
     }
   },
   "include": [
-    "./lib",
+    "src",
   ],
 }

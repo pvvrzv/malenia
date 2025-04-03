@@ -1,8 +1,11 @@
 {
   "name": "malenia",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
+  "files": [
+    "build"
+  ],
   "bugs": {
     "url": "https://github.com/pvvrzv/malenia/issues"
   },
@@ -20,7 +23,8 @@
     "test:manual": "vite",
     "test:cypress:headed": "cypress open --project tests -C ../cypress.config.js",
     "test:cypress": "cypress run --browser chrome --project tests -C ../cypress.config.js",
-    "test:vitest": "vitest"
+    "test:vitest": "vitest",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "cypress": "~13.8.1",
