@@ -14,4 +14,4 @@ export {
   preserve,
   proxy,
   effect,
-} from "@malenia/nyx";
+} from "@pvvrzv/nyx";
