@@ -3,7 +3,7 @@ describe('glogal hook specification', () => {
     const markup = /*html*/ `<div x-controller="controller"></div>`;
 
     cy.mount(markup).then(({ root, malenia }) => {
-      const { observe } = malenia;
+      const { observe, mount, unmout } = malenia;
 
       expect(() => observe()).to.throw();
       expect(() => mount(() => {})).to.throw();
