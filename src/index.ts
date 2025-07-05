@@ -1,7 +1,7 @@
-export { type Controller } from "./controller";
-export { observe, ignore } from "./observer";
-export { register } from "./registry";
-export { mount, unmount, select, clx, slx } from "./hooks";
+export { type Controller } from './controller';
+export { observe, ignore } from './observer';
+export { register } from './registry';
+export { mount, unmount, select, clx, slx } from './hooks';
 export {
   type Signal,
   signal,
@@ -14,4 +14,6 @@ export {
   preserve,
   proxy,
   effect,
-} from "@pvvrzv/nyx";
+  stop,
+  scope,
+} from '@pvvrzv/nyx';
